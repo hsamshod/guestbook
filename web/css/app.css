@@ -1,0 +1,11 @@
+.mb-1 {
+    margin-bottom: 15px;
+}
+
+#comment-form {
+    display: none;
+}
+
+#comment-form.show-form {
+    display: block;
+}

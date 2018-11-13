@@ -1,0 +1,40 @@
+<h4>Leave your comment</h4>
+
+{% set form_class = '' %}
+
+{% for label, messages in app.flashes %}
+    {% if label == 'danger' %}{% set form_class = 'show-form' %}{% endif %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+<div class="mb-1">
+    <button id="add-comment" class="btn btn-primary">Add</button>
+</div>
+
+<div class="mb-1">
+    {{ form_start(form, {'attr': {'class': form_class}}) }}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    {{ form_row(form.name) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(form.email) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(form.homepage) }}
+                </div>
+                <div class="col-md-12">
+                    {{ form_row(form.body) }}
+                </div>
+            </div>
+            {{ form_row(form.send, {'attr': {'class': 'btn btn-primary'}}) }}
+        </div>
+    </div>
+    {{ form_end(form) }}
+</div>

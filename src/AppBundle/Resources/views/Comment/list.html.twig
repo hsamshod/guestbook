@@ -1,0 +1,28 @@
+{% if comments_pager %}
+    <h4>Comments {% if comments_pager.getTotalItemCount %} ({{ comments_pager.getTotalItemCount }}) {% endif %}</h4>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th width="250">{{ knp_pagination_sortable(comments_pager, 'Id', 'c.name') }}</th>
+                <th>{{ knp_pagination_sortable(comments_pager, 'Email', 'c.email') }}</th>
+                <th></th>
+                <th width="150">{{ knp_pagination_sortable(comments_pager, 'Date', 'c.createdAt') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for comment in comments_pager %}
+            <tr>
+                <td>{{ comment.name }}</td>
+                <td>{{ comment.email }}</td>
+                <td>{{ comment.body }}</td>
+                <td>{{ comment.createdAt | date('H:i:s d.m.Y')}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="navigation">
+        {{ knp_pagination_render(comments_pager) }}
+    </div>
+{% endif %}

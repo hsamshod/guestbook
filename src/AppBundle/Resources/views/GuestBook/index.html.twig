@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    {{ include('AppBundle:Comment:form.html.twig') }}
+    {{ include('AppBundle:Comment:list.html.twig') }}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/app.js') }}"></script>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+{% endblock %}
